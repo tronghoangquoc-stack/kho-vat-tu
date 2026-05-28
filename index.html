@@ -136,9 +136,10 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:var
 .fixed-kho-head{padding:10px 14px;background:#1f2535;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
 .fixed-kho-name{font-family:var(--fontc);font-size:14px;font-weight:700;}
 .fixed-kho-body{padding:12px 14px;display:flex;flex-direction:column;gap:6px;}
-.fixed-row{display:grid;grid-template-columns:1fr 80px 80px 80px 120px;gap:8px;align-items:center;padding:6px 8px;border-radius:6px;border:1px solid var(--border);background:rgba(255,255,255,.02);}
+.fixed-row{display:grid;grid-template-columns:1fr 100px 80px 80px 80px 120px;gap:8px;align-items:center;padding:6px 8px;border-radius:6px;border:1px solid var(--border);background:rgba(255,255,255,.02);}
 .fixed-row.warn-row{border-color:rgba(255,107,53,.5);background:rgba(255,107,53,.06);}
 .fixed-label{font-size:12px;color:var(--text);}
+.fixed-codes{font-family:var(--fontc);font-size:11px;color:var(--yellow);text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .fixed-exp{font-family:var(--fontc);font-size:12px;color:var(--muted);text-align:center;}
 .fixed-act{font-family:var(--fontc);font-size:13px;font-weight:700;text-align:center;}
 .fixed-ok{color:var(--accent);}
@@ -149,26 +150,20 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:var
 .badge-ok{display:inline-flex;align-items:center;gap:4px;background:rgba(0,208,132,.12);border:1px solid rgba(0,208,132,.3);color:var(--accent);border-radius:5px;padding:2px 8px;font-size:11px;font-weight:600;}
 .badge-warn{display:inline-flex;align-items:center;gap:4px;background:rgba(255,107,53,.12);border:1px solid rgba(255,107,53,.4);color:var(--warn);border-radius:5px;padding:2px 8px;font-size:11px;font-weight:600;cursor:pointer;}
 .badge-warn:hover{background:rgba(255,107,53,.2);}
-.fixed-row-header{display:grid;grid-template-columns:1fr 80px 80px 80px 120px;gap:8px;padding:4px 8px;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
+.fixed-row-header{display:grid;grid-template-columns:1fr 100px 80px 80px 80px 120px;gap:8px;padding:4px 8px;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
 
 /* FIXED CONFIG */
-.fcfg-table{width:100%;border-collapse:collapse;max-width:900px;}
+.fcfg-table{width:100%;border-collapse:collapse;max-width:1000px;}
 .fcfg-table th{padding:8px 12px;background:#1f2535;border:1px solid var(--border);font-family:var(--fontc);font-size:11px;color:var(--muted);font-weight:600;text-align:center;}
 .fcfg-table th:first-child{text-align:left;}
 .fcfg-table td{padding:6px 8px;border:1px solid var(--border);text-align:center;}
 .fcfg-table td:first-child{font-family:var(--fontc);font-size:13px;font-weight:600;text-align:left;color:var(--text);}
-.fcfg-input{width:60px;background:var(--bg);border:1px solid var(--border);border-radius:5px;color:var(--text);font-family:var(--fontc);font-size:13px;font-weight:700;padding:5px 6px;text-align:center;outline:none;}
-.fcfg-input:focus{border-color:var(--accent);}
+.fcfg-txtinput{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:5px;color:var(--yellow);font-family:var(--fontc);font-size:12px;padding:5px 8px;outline:none;}
+.fcfg-txtinput:focus{border-color:var(--accent);}
 
-/* NOTE MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:300;display:none;align-items:flex-end;justify-content:center;}
-.modal-overlay.on{display:flex;}
-.modal-box{background:var(--card);border-top:2px solid var(--warn);border-radius:16px 16px 0 0;padding:20px 16px 36px;width:100%;max-width:480px;}
-.modal-title{font-family:var(--fontc);font-size:15px;font-weight:700;color:var(--warn);margin-bottom:4px;}
-.modal-sub{font-size:12px;color:var(--muted);margin-bottom:14px;}
-.modal-ta{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--font);font-size:13px;padding:12px;outline:none;resize:vertical;min-height:80px;margin-bottom:12px;}
-.modal-ta:focus{border-color:var(--warn);}
-.modal-btns{display:flex;gap:8px;}
+/* LOG TRANSACTION PANEL */
+.log-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px;}
+.log-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:14px;}
 
 /* REPORT */
 .report-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
@@ -194,10 +189,7 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:var
 .toast.err{background:#2e0d0d;border-color:var(--red);color:var(--red);}
 
 /* ===== PRINT ===== */
-.no-print{} /* marker */
-
 @media print {
-  /* Tắt màu nền tối, dùng màu sáng cho bản in */
   *{
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -206,85 +198,33 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:var
     border-color: #ccc !important;
     box-shadow: none !important;
   }
-
-  /* Ẩn toàn bộ UI */
-  #loginScreen, .topbar, .tabbar, .toast,
-  .modal-overlay, .sub-banner,
-  .no-print, .btn-icon,
-  .drow .btn-sec, .drow .btn-accent,
-  .report-bar .btn-sec, .report-bar .btn-accent { display: none !important; }
-
-  /* Ẩn tất cả panel */
+  #loginScreen, .topbar, .tabbar, .toast, .modal-overlay, .sub-banner, .no-print, .btn-icon,
+  .drow .btn-sec, .drow .btn-accent, .report-bar .btn-sec, .report-bar .btn-accent, .log-box { display: none !important; }
   .panel { display: none !important; }
-
-  /* Chỉ hiện panel báo cáo đang mở */
   #panel-report.on { display: block !important; padding: 0 !important; }
-
-  /* Không vỡ trang trong bảng */
-  .tscroll, .rpt-day-block, .rpt-section {
-    overflow: visible !important;
-    page-break-inside: avoid;
-  }
-
-  /* Bảng in đẹp */
-  .dtable, table {
-    width: 100% !important;
-    font-size: 9pt !important;
-    border-collapse: collapse !important;
-    white-space: normal !important;
-    page-break-inside: auto;
-  }
+  .tscroll, .rpt-day-block, .rpt-section { overflow: visible !important; page-break-inside: avoid; }
+  .dtable, table { width: 100% !important; font-size: 9pt !important; border-collapse: collapse !important; white-space: normal !important; }
   .dtable tr, table tr { page-break-inside: avoid; }
-  .dtable th, table th {
-    background: #e8e8e8 !important;
-    color: #000 !important;
-    border: 1pt solid #999 !important;
-    padding: 5pt 6pt !important;
-    font-size: 8pt !important;
-  }
-  .dtable td, table td {
-    border: 1pt solid #ccc !important;
-    padding: 4pt 6pt !important;
-    color: #000 !important;
-  }
-  .dtable .trow td, table .trow td {
-    background: #f0f0f0 !important;
-    font-weight: bold !important;
-  }
+  .dtable th, table th { background: #e8e8e8 !important; color: #000 !important; border: 1pt solid #999 !important; padding: 5pt 6pt !important; font-size: 8pt !important; }
+  .dtable td, table td { border: 1pt solid #ccc !important; padding: 4pt 6pt !important; color: #000 !important; }
+  .dtable .trow td, table .trow td { background: #f0f0f0 !important; font-weight: bold !important; }
   .vz { color: #aaa !important; }
   .warn-val { color: #c00 !important; font-weight: bold !important; }
-
-  /* Tổng hợp */
-  .rpt-summary-grid {
-    display: grid !important;
-    grid-template-columns: repeat(4,1fr) !important;
-    gap: 4pt !important;
-  }
-  .rpt-sum-card {
-    border: 1pt solid #ccc !important;
-    padding: 5pt !important;
-  }
+  .rpt-summary-grid { display: grid !important; grid-template-columns: repeat(4,1fr) !important; gap: 4pt !important; }
+  .rpt-sum-card { border: 1pt solid #ccc !important; padding: 5pt !important; }
   .rpt-sum-label { font-size: 7pt !important; color: #555 !important; }
   .rpt-sum-val { font-size: 14pt !important; color: #000 !important; }
-
-  /* Ngắt trang giữa các ngày khi in nhiều ngày */
   .rpt-day-block { page-break-inside: avoid; margin-bottom: 8pt !important; }
-
-  /* Print header */
   .print-header { display: block !important; margin-bottom: 12pt; }
   .rpt-section-title { color: #333 !important; border-bottom: 1pt solid #000 !important; }
   .report-bar { display: none !important; }
 }
-
-/* Print header — ẩn trên màn hình */
 .print-header { display: none; }
-
 @media screen { .print-header { display: none; } }
 </style>
 </head>
 <body>
 
-<!-- LOGIN -->
 <div id="loginScreen">
   <div class="login-box">
     <div class="login-logo">🏭 KHO VẬT TƯ</div>
@@ -309,7 +249,6 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:var
   </div>
 </div>
 
-<!-- APP -->
 <div id="appScreen">
   <div class="topbar">
     <div class="topbar-brand">🏭 KHO VẬT TƯ</div>
@@ -318,25 +257,23 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:var
   </div>
   <div class="tabbar" id="tabbar"></div>
 
-  <!-- TL: Báo cáo hôm nay -->
   <div class="panel on" id="panel-tl">
     <div class="sub-banner" id="subBanner">✅ Bạn đã lưu báo cáo hôm nay</div>
+    <div id="pdaTeamleadBox" style="margin-bottom: 16px;"></div>
     <div class="kho-grid" id="khoGrid"></div>
     <button class="btn-save no-print" onclick="submitReport()">💾 LƯU BÁO CÁO HÔM NAY</button>
   </div>
 
-  <!-- TL: Kiểm tra thiết bị cố định -->
   <div class="panel" id="panel-fixed">
-    <div class="stitle">Kiểm tra thiết bị cố định</div>
+    <div class="stitle">Kiểm tra thiết bị cố định & PDA Cá Nhân</div>
     <p style="font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.7;">
-      So sánh số liệu thực tế với định mức chuẩn. Số lệch sẽ được đánh dấu cảnh báo và có thể ghi chú lý do.
+      So sánh số liệu thực tế với định mức chuẩn kèm mã tài sản. Số lệch sẽ được đánh dấu cảnh báo.
     </p>
     <div class="fixed-grid" id="fixedGrid">
       <div style="color:var(--muted);font-size:13px;padding:16px;">Đang tải...</div>
     </div>
   </div>
 
-  <!-- Admin: Tổng hợp ngày -->
   <div class="panel" id="panel-dash">
     <div class="drow">
       <span style="font-size:12px;color:var(--muted)">Ngày:</span>
@@ -346,17 +283,15 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:var
     </div>
     <div class="stitle">Trạng thái báo cáo</div>
     <div class="sgrid" id="sgrid"></div>
-    <div class="stitle">Tổng vật tư toàn kho</div>
+    <div class="stitle">Tổng vật tư toàn kho (Bao gồm PDA Teamlead)</div>
     <div class="sumgrid" id="sumgrid"></div>
     <div class="stitle">Chi tiết theo kho</div>
     <div class="tscroll"><table class="dtable" id="dtable"></table></div>
-    <div class="stitle">Chi tiết theo từng TL</div>
+    <div class="stitle">Chi tiết theo từng TL & PDA cá nhân</div>
     <div id="tlDetail"></div>
   </div>
 
-  <!-- Admin: Báo cáo tuần/tháng + in -->
   <div class="panel" id="panel-report">
-    <!-- Print header (ẩn trên màn hình, hiện khi in) -->
     <div class="print-header" id="printHeader">
       <h2 style="font-size:16pt;font-weight:bold;margin-bottom:6pt;">BÁO CÁO KHO VẬT TƯ</h2>
       <p style="font-size:11pt;margin-bottom:2pt;" id="phSubtitle"></p>
@@ -366,9 +301,11 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:var
 
     <div class="report-bar no-print">
       <select class="rpt-select" id="rptType" onchange="onRptTypeChange()">
+        <option value="day">Theo ngày</option>
         <option value="week">Theo tuần</option>
         <option value="month">Theo tháng</option>
       </select>
+      <input type="date" id="rptDayDate" class="dsel">
       <input type="date" id="rptWeekDate" class="dsel" style="display:none">
       <select class="rpt-select" id="rptMonth" style="display:none"></select>
       <select class="rpt-select" id="rptYear"  style="display:none"></select>
@@ -379,12 +316,11 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:var
     <div id="reportContent"></div>
   </div>
 
-  <!-- Admin: Cấu hình thiết bị cố định -->
   <div class="panel" id="panel-fcfg">
-    <div class="stitle">Cấu hình định mức thiết bị cố định</div>
+    <div class="stitle">Cấu hình định mức & Mã tài sản thiết bị cố định</div>
     <p style="font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.7;">
-      Nhập số lượng tiêu chuẩn (định mức) cho từng thiết bị tại mỗi kho.<br>
-      Khi TL báo cáo số khác định mức → hệ thống hiển thị cảnh báo tự động.
+      Nhập các mã tài sản cụ thể của từng thiết bị, <strong>ngăn cách bằng dấu phẩy</strong> (Ví dụ: <code>M01, M02, M03</code>).<br>
+      Số lượng định mức chuẩn sẽ được hệ thống <strong>tự động tính</strong> dựa trên số lượng mã tài sản được khai báo.
     </p>
     <div id="fcfgContent"></div>
     <div style="margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
@@ -393,7 +329,45 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:var
     </div>
   </div>
 
-  <!-- Admin: Phân công kho -->
+  <div class="panel" id="panel-txlog">
+    <div class="stitle">Điều chuyển / Nhập / Xuất Tài Sản Cố Định</div>
+    <div class="log-box">
+      <div class="log-form">
+        <div>
+          <div class="fl-label">Loại giao dịch</div>
+          <select id="txType" class="fl-select" style="margin-bottom:0;" onchange="onChangeTxType()">
+            <option value="NHAP">Nhập mới tài sản</option>
+            <option value="XUAT">Xuất thanh lý/Hủy tài sản</option>
+            <option value="LUAN_CHUYEN">Luân chuyển nội bộ</option>
+          </select>
+        </div>
+        <div>
+          <div class="fl-label">Thiết bị</div>
+          <select id="txItemKey" class="fl-select" style="margin-bottom:0;"></select>
+        </div>
+        <div id="divTxSource">
+          <div class="fl-label" id="lblTxSource">Kho/TL Nguồn</div>
+          <select id="txSource" class="fl-select" style="margin-bottom:0;"></select>
+        </div>
+        <div id="divTxDest">
+          <div class="fl-label" id="lblTxDest">Kho/TL Đích</div>
+          <select id="txDest" class="fl-select" style="margin-bottom:0;"></select>
+        </div>
+        <div>
+          <div class="fl-label">Mã tài sản (cách nhau bằng dấu phẩy)</div>
+          <input type="text" id="txCodes" class="fl-input" style="margin-bottom:0;" placeholder="Ví dụ: PDA09, PDA10">
+        </div>
+      </div>
+      <div style="margin-top:12px;">
+        <div class="fl-label">Lý do thực hiện</div>
+        <input type="text" id="txReason" class="fl-input" style="width:100%; margin-bottom:12px;" placeholder="Ví dụ: Cấp bổ sung thiết bị, gửi bảo hành...">
+        <button class="btn-accent" onclick="executeTransaction()">⚡ THỰC HIỆN ĐIỀU CHUYỂN</button>
+      </div>
+    </div>
+    <div class="stitle">Lịch sử giao dịch tài sản</div>
+    <div class="tscroll"><table class="dtable" id="txHistoryTable"></table></div>
+  </div>
+
   <div class="panel" id="panel-assign">
     <div class="stitle">Phân công kho cho Teamlead</div>
     <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">
@@ -402,17 +376,10 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:var
     <div class="assign-wrap" id="assignWrap"></div>
   </div>
 
-  <!-- Admin: Hướng dẫn -->
   <div class="panel" id="panel-guide">
     <div class="setup-box">
-      <strong>📖 HƯỚNG DẪN CÀI ĐẶT FIREBASE (1 LẦN DUY NHẤT)</strong><br><br>
-      <strong>Bước 1:</strong> Vào <code>console.firebase.google.com</code> → Tạo project mới (miễn phí)<br>
-      <strong>Bước 2:</strong> Vào <strong>Build → Realtime Database</strong> → Create database → chọn <code>Start in test mode</code><br>
-      <strong>Bước 3:</strong> Vào <strong>Project Settings → General</strong> → Thêm Web App → Copy <code>firebaseConfig</code><br>
-      <strong>Bước 4:</strong> Mở file HTML bằng Notepad, tìm <code>FIREBASE_CONFIG</code> và thay bằng config vừa copy<br>
-      <strong>Bước 5:</strong> Upload lên <code>netlify.com</code> (miễn phí) để có link dùng online<br><br>
       <strong>Mật khẩu mặc định:</strong><br>
-      Admin: <code>admin123</code> | Thành Nam: <code>tn123</code> | Hữ Trí: <code>ht123</code><br>
+      Admin: <code>admin123</code> | Thành Nam: <code>tn123</code> | Hữu Trí: <code>ht123</code><br>
       Giang: <code>g123</code> | Duyên: <code>d123</code> | Thu Hà: <code>th123</code><br>
       Trọng: <code>tr123</code> | Newman: <code>nw123</code>
     </div>
@@ -420,7 +387,6 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:var
     <div id="adminPwList"></div>
   </div>
 
-  <!-- Đổi mật khẩu -->
   <div class="panel" id="panel-pw">
     <div class="pw-box">
       <div class="stitle">Đổi mật khẩu</div>
@@ -435,7 +401,6 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:var
   </div>
 </div>
 
-<!-- NOTE MODAL -->
 <div class="modal-overlay" id="noteModal">
   <div class="modal-box">
     <div class="modal-title">⚠ Ghi chú lý do lệch số</div>
@@ -481,7 +446,7 @@ const DEFAULT_PWS = {
 const ALL_WHS   = ['C1','D1','G1','F1','E3','I1','I2','A2','A3','B2','B3'];
 const TL_USERS  = ['thanh_nam','huu_tri','giang','duyen','thu_ha','trong','newman'];
 
-// Tất cả vật tư
+// Tất cả vật tư (Đã loại bỏ pda khỏi vật tư thuộc kho)
 const ITEMS = [
   {k:'tote_x',  l:'Tote Xanh',    c:'cb'},
   {k:'tote_d',  l:'Tote Đỏ',      c:'cr'},
@@ -490,16 +455,18 @@ const ITEMS = [
   {k:'xe_vang', l:'Xe Vàng',      c:'cxv'},
   {k:'xe_nang', l:'Xe Nâng',      c:'cnk'},
   {k:'may_tinh',l:'Máy Tính',     c:'cmt'},
-  {k:'pda',     l:'PDA',           c:'cpda'},
   {k:'bo_dam',  l:'Bộ Đàm',       c:'cbd'},
   {k:'quat_lon',l:'Quạt Lớn',     c:'cqn'},
   {k:'quat_nho',l:'Quạt Nhỏ',     c:'cqs'},
   {k:'ban_mt',  l:'Bàn Máy Tính', c:'cbmt'},
   {k:'ghe',     l:'Ghế',           c:'cgh'},
+  {k:'pda',     l:'PDA cá nhân',   c:'cpda'} // Thêm vào danh mục chung để hiển thị tổng hợp báo cáo dễ dàng
 ];
 
-// Thiết bị có định mức cố định
-const FIXED_ITEM_KEYS = ['xe_nang','may_tinh','pda','bo_dam','quat_lon','quat_nho','ban_mt','ghe'];
+// Thiết bị cố định theo KHO
+const FIXED_ITEM_KEYS = ['xe_nang','may_tinh','bo_dam','quat_lon','quat_nho','ban_mt','ghe'];
+// Thiết bị cố định theo TEAMLEAD (tài sản cá nhân)
+const TL_FIXED_ITEM_KEYS = ['pda'];
 
 // ════ FIREBASE ════
 let db = null, USE_LOCAL = false;
@@ -522,6 +489,7 @@ function dbSet(path, val) {
 // ════ STATE ════
 let curUser = null;
 let _noteCtx = null;
+let _fixedCfg = null;
 function today() { return new Date().toISOString().slice(0,10); }
 
 // ════ LOGIN ════
@@ -560,7 +528,8 @@ function buildApp() {
   if (isAdmin) {
     addTab(bar,'dash','📊 Tổng Hợp',true,true);
     addTab(bar,'report','📅 Báo Cáo',false,true);
-    addTab(bar,'fcfg','⚙️ Định Mức TB',false,true);
+    addTab(bar,'fcfg','⚙️ Định Mức & Mã TS',false,true);
+    addTab(bar,'txlog','⚡ Nhập/Xuất Tài Sản',false,true);
     addTab(bar,'assign','🏪 Phân Công Kho',false,true);
     addTab(bar,'guide','📖 Hướng Dẫn',false,true);
     addTab(bar,'pw','🔑 Đổi Mật Khẩu');
@@ -570,12 +539,13 @@ function buildApp() {
     buildAdminPwList();
     initReportControls();
     buildFcfgPanel();
+    initTxLogPanel();
   } else {
     addTab(bar,'tl','📝 Báo Cáo Hôm Nay',true);
     addTab(bar,'fixed','⚠️ Kiểm Tra TB',false);
     addTab(bar,'pw','🔑 Đổi Mật Khẩu');
     showPanel('tl');
-    loadAssignments().then(()=>{ buildKhoGrid(); loadTodayData(); });
+    loadAssignments().then(()=>{ buildKhoGrid(); buildPdaTeamleadBox(); loadTodayData(); });
   }
 }
 
@@ -597,8 +567,8 @@ function showPanel(id) {
   if (id==='assign') buildAssignPanel();
   if (id==='guide')  buildAdminPwList();
   if (id==='fixed')  buildFixedPanel();
-  if (id==='report') { /* user clicks Tải báo cáo */ }
   if (id==='fcfg')   buildFcfgPanel();
+  if (id==='txlog')  renderTxLogHistory();
 }
 
 // ════ ASSIGNMENTS ════
@@ -649,7 +619,21 @@ async function applyAssign(uid) {
   showToast(`✅ Đã cập nhật kho cho ${USERS[uid].name}`);
 }
 
-// ════ KHO GRID ════
+// ════ KHO GRID & PDA BOX ════
+function buildPdaTeamleadBox() {
+  const box = document.getElementById('pdaTeamleadBox');
+  box.innerHTML = `
+    <div class="kho-card" style="border-color: var(--accent);">
+      <div class="kho-head" style="background: #113629;">📱 Tài Sản Cá Nhân Gắn Liền Teamlead</div>
+      <div class="kho-body">
+        <div class="irow">
+          <label class="ilabel"><span class="cdot cpda"></span>PDA sở hữu cá nhân</label>
+          <input type="number" min="0" class="qty" id="i_pda_${curUser}" placeholder="0">
+        </div>
+      </div>
+    </div>`;
+}
+
 function buildKhoGrid() {
   const whs = USERS[curUser].whs;
   const grid = document.getElementById('khoGrid');
@@ -657,11 +641,13 @@ function buildKhoGrid() {
     grid.innerHTML=`<div style="color:var(--muted);font-size:13px;padding:16px">Chưa được phân công kho. Liên hệ Admin.</div>`;
     return;
   }
+  // Loại pda ra khỏi danh sách lặp của từng kho vật tư
+  const khoItems = ITEMS.filter(it => it.k !== 'pda');
   grid.innerHTML = whs.map(wh=>`
     <div class="kho-card">
       <div class="kho-head">🏪 Kho ${wh}</div>
       <div class="kho-body">
-        ${ITEMS.map(it=>`
+        ${khoItems.map(it=>`
           <div class="irow">
             <label class="ilabel"><span class="cdot ${it.c}"></span>${it.l}</label>
             <input type="number" min="0" class="qty" id="i_${wh}_${it.k}" placeholder="0">
@@ -673,8 +659,15 @@ function buildKhoGrid() {
 async function loadTodayData() {
   const data = await dbGet(`reports/${today()}/${curUser}`);
   if (!data) return;
+  
+  // Load pda của Teamlead
+  const elPda = document.getElementById(`i_pda_${curUser}`);
+  if (elPda && data._pda_tl !== undefined) elPda.value = data._pda_tl || '';
+
+  // Load vật tư kho
   USERS[curUser].whs.forEach(wh=>{
     ITEMS.forEach(it=>{
+      if (it.k === 'pda') return;
       const el = document.getElementById(`i_${wh}_${it.k}`);
       if (el && data[wh]?.[it.k]!==undefined) el.value = data[wh][it.k]||'';
     });
@@ -684,10 +677,13 @@ async function loadTodayData() {
 
 async function submitReport() {
   const whs = USERS[curUser].whs;
-  const payload = { _submitted:true, _ts:Date.now() };
+  const elPda = document.getElementById(`i_pda_${curUser}`);
+  const payload = { _submitted:true, _ts:Date.now(), _pda_tl: elPda ? (parseInt(elPda.value)||0) : 0 };
+  
   whs.forEach(wh=>{
     payload[wh]={};
     ITEMS.forEach(it=>{
+      if (it.k === 'pda') return;
       const el=document.getElementById(`i_${wh}_${it.k}`);
       payload[wh][it.k]=el?(parseInt(el.value)||0):0;
     });
@@ -715,13 +711,22 @@ async function renderDash() {
   }).join('');
 
   // Aggregate
-  const totals={}, whAgg={};
+  const totals={}, whAgg={}, tlPdaActual={};
   ITEMS.forEach(it=>totals[it.k]=0);
   ALL_WHS.forEach(wh=>{whAgg[wh]={};ITEMS.forEach(it=>whAgg[wh][it.k]=0);});
+  
   TL_USERS.forEach(uid=>{
     const ud=allData[uid]||{};
+    tlPdaActual[uid] = ud._pda_tl || 0;
+    totals['pda'] += tlPdaActual[uid]; // Cộng vào tổng vật tư pda toàn hệ thống
+
     (USERS[uid].whs||[]).forEach(wh=>{
-      ITEMS.forEach(it=>{ const v=ud[wh]?.[it.k]||0; whAgg[wh][it.k]+=v; totals[it.k]+=v; });
+      ITEMS.forEach(it=>{ 
+        if (it.k === 'pda') return;
+        const v=ud[wh]?.[it.k]||0; 
+        whAgg[wh][it.k]+=v; 
+        totals[it.k]+=v; 
+      });
     });
   });
 
@@ -732,29 +737,30 @@ async function renderDash() {
       <div class="sumv">${totals[it.k].toLocaleString()}</div>
     </div>`).join('');
 
-  // Detail table
-  const head = `<thead><tr><th>Kho</th>${ITEMS.map(it=>`<th>${it.l}</th>`).join('')}</tr></thead>`;
+  // Detail table (Kho)
+  const khoItems = ITEMS.filter(it=>it.k!=='pda');
+  const head = `<thead><tr><th>Kho</th>${khoItems.map(it=>`<th>${it.l}</th>`).join('')}</tr></thead>`;
   let body = '<tbody>';
   ALL_WHS.forEach(wh=>{
-    body += `<tr><td>🏪 ${wh}</td>${ITEMS.map(it=>{
+    body += `<tr><td>🏪 ${wh}</td>${khoItems.map(it=>{
       const v=whAgg[wh][it.k];
       return `<td class="${v?'':'vz'}">${v||'—'}</td>`;
     }).join('')}</tr>`;
   });
-  body += `<tr class="trow"><td>TỔNG</td>${ITEMS.map(it=>`<td>${totals[it.k].toLocaleString()}</td>`).join('')}</tr>`;
+  body += `<tr class="trow"><td>TỔNG KHO</td>${khoItems.map(it=>`<td>${totals[it.k].toLocaleString()}</td>`).join('')}</tr>`;
   body += '</tbody>';
   document.getElementById('dtable').innerHTML = head+body;
 
-  // By TL
+  // By TL & PDA cá nhân
   let tlHtml='';
   TL_USERS.forEach(uid=>{
     const ud=allData[uid]||{}, whs=USERS[uid].whs;
+    tlHtml += `<div class="stitle" style="margin-top:12px; color:var(--info);">${USERS[uid].name} — PDA Cá Nhân Thực Tế: <span style="color:var(--yellow); font-size:14px;">${tlPdaActual[uid]}</span></div>`;
     if (!whs.length) return;
-    tlHtml += `<div class="stitle" style="margin-top:12px">${USERS[uid].name} — ${whs.join(', ')}</div>
-    <div class="tscroll"><table class="dtable">
-      <thead><tr><th>Kho</th>${ITEMS.map(it=>`<th>${it.l}</th>`).join('')}</tr></thead><tbody>`;
+    tlHtml += `<div class="tscroll"><table class="dtable">
+      <thead><tr><th>Kho quản lý</th>${khoItems.map(it=>`<th>${it.l}</th>`).join('')}</tr></thead><tbody>`;
     whs.forEach(wh=>{
-      tlHtml += `<tr><td>🏪 ${wh}</td>${ITEMS.map(it=>{const v=ud[wh]?.[it.k]||0;return`<td class="${v?'':'vz'}">${v||'—'}</td>`;}).join('')}</tr>`;
+      tlHtml += `<tr><td>🏪 ${wh}</td>${khoItems.map(it=>{const v=ud[wh]?.[it.k]||0;return`<td class="${v?'':'vz'}">${v||'—'}</td>`;}).join('')}</tr>`;
     });
     tlHtml += '</tbody></table></div>';
   });
@@ -768,38 +774,49 @@ async function exportDayCSV() {
   const fixedCfg = await loadFixedCfg();
   const notes = await dbGet(`notes/${date}`)||{};
 
-  // Build aggregate per wh
   const whAgg={};
   ALL_WHS.forEach(wh=>{whAgg[wh]={tl:'',data:{}};ITEMS.forEach(it=>whAgg[wh].data[it.k]=0);});
+  
+  const tlPdaActual={};
   TL_USERS.forEach(uid=>{
+    const ud=allData[uid]||{};
+    tlPdaActual[uid] = ud._pda_tl || 0;
     (USERS[uid].whs||[]).forEach(wh=>{
       whAgg[wh].tl=USERS[uid].name;
-      const ud=allData[uid]||{};
-      ITEMS.forEach(it=>whAgg[wh].data[it.k]+=(ud[wh]?.[it.k]||0));
+      ITEMS.forEach(it=>{ if(it.k!=='pda') whAgg[wh].data[it.k]+=(ud[wh]?.[it.k]||0); });
     });
   });
 
   const q = v => `"${String(v===null||v===undefined?'':v).replace(/"/g,'""')}"`;
-
-  // Header: Ngày | Kho | TL | item1 | item2 | ... | Cảnh báo | Ghi chú
   const rows = [];
-  rows.push(['Ngày','Kho','Teamlead',...ITEMS.map(it=>it.l),'Cảnh báo lệch số','Ghi chú'].map(q).join(','));
+  
+  // Header
+  const csvHeaders = ['Ngày','Đối Tượng','Phân Loại Gắn Liền', ...ITEMS.map(it=>it.l), 'Cảnh báo lệch định mức', 'Ghi chú'];
+  rows.push(csvHeaders.map(q).join(','));
 
+  // Xuất dữ liệu các Kho trước
   ALL_WHS.forEach(wh=>{
     const agg = whAgg[wh];
-    const itemVals = ITEMS.map(it=>agg.data[it.k]);
-
-    // Cảnh báo
-    const warns = FIXED_ITEM_KEYS.filter(k=>{
-      const exp=fixedCfg[wh]?.[k];
-      return exp!==undefined && exp>0 && agg.data[k]!==exp;
-    }).map(k=>{
-      const it=ITEMS.find(i=>i.k===k);
-      const exp=fixedCfg[wh][k], act=agg.data[k], diff=act-exp;
-      return `${it.l}: thực tế ${act} / chuẩn ${exp} (${diff>0?'+':''}${diff})`;
+    // Tạo mảng giá trị khớp với các cột ITEMS
+    const itemVals = ITEMS.map(it=>{
+      if(it.k === 'pda') return '—'; // Kho không sở hữu PDA cá nhân
+      return agg.data[it.k];
     });
 
-    // Ghi chú
+    // Cảnh báo Kho
+    const warns = FIXED_ITEM_KEYS.filter(k=>{
+      const expStr = fixedCfg.wh?.[wh]?.[k] || '';
+      const exp = expStr ? expStr.split(',').filter(Boolean).length : 0;
+      return exp > 0 && agg.data[k] !== exp;
+    }).map(k=>{
+      const it=ITEMS.find(i=>i.k===k);
+      const expStr = fixedCfg.wh?.[wh]?.[k] || '';
+      const exp = expStr ? expStr.split(',').filter(Boolean).length : 0;
+      const act=agg.data[k], diff=act-exp;
+      return `${it.l}: Thực tế ${act}/Chuẩn ${exp} (${diff>0?'+':''}${diff})`;
+    });
+
+    // Ghi chú Kho
     const noteTexts = FIXED_ITEM_KEYS.map(k=>{
       const n=notes[`${wh}_${k}`];
       if (!n?.text) return '';
@@ -807,59 +824,272 @@ async function exportDayCSV() {
       return `${it.l}: ${n.text}`;
     }).filter(Boolean);
 
-    rows.push([date,wh,agg.tl||'—',...itemVals,warns.join(' | '),noteTexts.join(' | ')].map(q).join(','));
+    rows.push([date, `Kho ${wh}`, `TL: ${agg.tl||'—'}`, ...itemVals, warns.join(' | '), noteTexts.join(' | ')].map(q).join(','));
   });
 
-  // Tổng cộng
+  // Xuất dữ liệu PDA gắn liền Teamlead
+  TL_USERS.forEach(uid=>{
+    const act = tlPdaActual[uid];
+    const expStr = fixedCfg.tl?.[uid]?.['pda'] || '';
+    const exp = expStr ? expStr.split(',').filter(Boolean).length : 0;
+    
+    const itemVals = ITEMS.map(it=>{
+      if(it.k==='pda') return act;
+      return '—';
+    });
+
+    let warn = '';
+    if(exp > 0 && act !== exp) {
+      const diff = act - exp;
+      warn = `PDA cá nhân: Thực tế ${act}/Chuẩn ${exp} (${diff>0?'+':''}${diff})`;
+    }
+
+    const n = notes[`${uid}_pda`];
+    const noteText = n?.text ? `PDA cá nhân: ${n.text}` : '';
+
+    rows.push([date, `Teamlead: ${USERS[uid].name}`, 'Tài sản cá nhân', ...itemVals, warn, noteText].map(q).join(','));
+  });
+
+  // Dòng tổng cộng của ngày
   const totals={}; ITEMS.forEach(it=>totals[it.k]=0);
-  ALL_WHS.forEach(wh=>ITEMS.forEach(it=>totals[it.k]+=whAgg[wh].data[it.k]));
-  rows.push(['','TỔNG CỘNG','',...ITEMS.map(it=>totals[it.k]),'',''].map(q).join(','));
+  ALL_WHS.forEach(wh=>ITEMS.forEach(it=>{ if(it.k!=='pda') totals[it.k]+=whAgg[wh].data[it.k]; }));
+  TL_USERS.forEach(uid=>totals['pda']+=tlPdaActual[uid]);
+
+  rows.push([date, 'TỔNG CỘNG HỆ THỐNG', '—', ...ITEMS.map(it=>totals[it.k]), '', ''].map(q).join(','));
 
   downloadCSV(rows.join('\r\n'), `baocao_ngay_${date}.csv`);
 }
 
-// ════ FIXED CONFIG ════
-let _fixedCfg = null;
+// ════ FIXED CONFIG (MÃ TÀI SẢN & ĐỊNH MỨC) ════
 async function loadFixedCfg() {
   if (_fixedCfg) return _fixedCfg;
-  const d = await dbGet('fixed_cfg');
-  _fixedCfg = d||{};
+  const d = await dbGet('fixed_cfg_v2');
+  _fixedCfg = d || { wh: {}, tl: {} };
   return _fixedCfg;
 }
 
 async function buildFcfgPanel() {
   const cfg = await loadFixedCfg();
+  if(!cfg.wh) cfg.wh = {};
+  if(!cfg.tl) cfg.tl = {};
+
   const fixedItems = ITEMS.filter(it=>FIXED_ITEM_KEYS.includes(it.k));
-  // Table: rows=kho, cols=items
-  let html = `<div style="overflow-x:auto;"><table class="fcfg-table">
+  
+  // 1. Cấu hình thiết bị cho từng KHO
+  let html = `<h3>🏪 Định mức mã tài sản theo từng Kho</h3>
+  <div style="overflow-x:auto; margin-bottom: 24px;"><table class="fcfg-table">
     <thead><tr><th>Kho</th>${fixedItems.map(it=>`<th>${it.l}</th>`).join('')}</tr></thead><tbody>`;
   ALL_WHS.forEach(wh=>{
-    html += `<tr><td>🏪 ${wh}</td>${fixedItems.map(it=>`
-      <td><input type="number" min="0" class="fcfg-input" id="fc_${wh}_${it.k}"
-        value="${cfg[wh]?.[it.k]||0}" placeholder="0"></td>`).join('')}</tr>`;
+    if(!cfg.wh[wh]) cfg.wh[wh] = {};
+    html += `<tr><td>🏪 Kho ${wh}</td>${fixedItems.map(it=>`
+      <td><input type="text" class="fcfg-txtinput" id="fc_wh_${wh}_${it.k}"
+        value="${cfg.wh[wh][it.k]||''}" placeholder="Nhập các mã thiết bị, cách nhau bằng dấu phẩy"></td>`).join('')}</tr>`;
   });
   html += '</tbody></table></div>';
+
+  // 2. Cấu hình PDA cho từng TEAMLEAD
+  html += `<h3>📱 Định mức mã PDA sở hữu theo từng Teamlead</h3>
+  <div style="overflow-x:auto;"><table class="fcfg-table" style="max-width:500px;">
+    <thead><tr><th>Teamlead</th><th>Mã tài sản PDA sở hữu</th></tr></thead><tbody>`;
+  TL_USERS.forEach(uid=>{
+    if(!cfg.tl[uid]) cfg.tl[uid] = {};
+    html += `<tr><td>👤 ${USERS[uid].name}</td>
+      <td><input type="text" class="fcfg-txtinput" id="fc_tl_${uid}_pda"
+        value="${cfg.tl[uid]['pda']||''}" placeholder="Mã PDA sở hữu, cách nhau bằng dấu phẩy"></td></tr>`;
+  });
+  html += '</tbody></table></div>';
+
   document.getElementById('fcfgContent').innerHTML = html;
 }
 
 async function saveFixedCfg() {
-  const cfg={};
+  const cfg = { wh: {}, tl: {} };
+  
+  // Lưu kho
   ALL_WHS.forEach(wh=>{
-    cfg[wh]={};
+    cfg.wh[wh]={};
     FIXED_ITEM_KEYS.forEach(k=>{
-      const el=document.getElementById(`fc_${wh}_${k}`);
-      cfg[wh][k]=parseInt(el?.value)||0;
+      const el=document.getElementById(`fc_wh_${wh}_${k}`);
+      cfg.wh[wh][k] = el ? el.value.trim().replace(/\s+/g, '') : '';
     });
   });
-  await dbSet('fixed_cfg',cfg);
+
+  // Lưu teamlead
+  TL_USERS.forEach(uid=>{
+    cfg.tl[uid]={};
+    const el=document.getElementById(`fc_tl_${uid}_pda`);
+    cfg.tl[uid]['pda'] = el ? el.value.trim().replace(/\s+/g, '') : '';
+  });
+
+  await dbSet('fixed_cfg_v2', cfg);
   _fixedCfg = cfg;
   const msg=document.getElementById('fcfgMsg');
-  msg.textContent='✅ Đã lưu!'; msg.style.color='var(--accent)';
+  msg.textContent='✅ Đã lưu cấu hình!'; msg.style.color='var(--accent)';
   setTimeout(()=>msg.textContent='',3000);
-  showToast('✅ Đã lưu cấu hình định mức');
+  showToast('✅ Đã lưu cấu hình định mức & mã tài sản mới');
 }
 
-// ════ FIXED PANEL (TL VIEW) ════
+// ════ NHẬT KÝ NHẬP/XUẤT/ĐIỀU CHUYỂN TÀI SẢN ════
+function initTxLogPanel() {
+  // Điền chọn thiết bị cố định bao gồm pda
+  const itemSel = document.getElementById('txItemKey');
+  const txItems = ITEMS.filter(it=> FIXED_ITEM_KEYS.includes(it.k) || it.k==='pda');
+  itemSel.innerHTML = txItems.map(it=>`<option value="${it.k}">${it.l}</option>`).join('');
+
+  // Lắng nghe đổi loại thiết bị để hiển thị nguồn/đích là Kho hay Teamlead tương ứng
+  itemSel.onchange = onChangeTxItemKey;
+  onChangeTxType();
+}
+
+function onChangeTxItemKey() {
+  const itemKey = document.getElementById('txItemKey').value;
+  const srcSel = document.getElementById('txSource');
+  const destSel = document.getElementById('txDest');
+  
+  if(itemKey === 'pda') {
+    // Nếu là PDA, nguồn/đích sẽ là danh sách Teamlead
+    const options = TL_USERS.map(uid=>`<option value="${uid}">${USERS[uid].name}</option>`).join('');
+    srcSel.innerHTML = options;
+    destSel.innerHTML = options;
+    document.getElementById('lblTxSource').textContent = "Teamlead Nguồn";
+    document.getElementById('lblTxDest').textContent = "Teamlead Đích";
+  } else {
+    // Thiết bị thông thường, nguồn/đích là Kho
+    const options = ALL_WHS.map(wh=>`<option value="${wh}">Kho ${wh}</option>`).join('');
+    srcSel.innerHTML = options;
+    destSel.innerHTML = options;
+    document.getElementById('lblTxSource').textContent = "Kho Nguồn";
+    document.getElementById('lblTxDest').textContent = "Kho Đích";
+  }
+}
+
+function onChangeTxType() {
+  const type = document.getElementById('txType').value;
+  onChangeTxItemKey(); // Cập nhật lại list nguồn đích theo item trước
+
+  if(type === 'NHAP') {
+    document.getElementById('divTxSource').style.display = 'none';
+    document.getElementById('divTxDest').style.display = 'block';
+  } else if(type === 'XUAT') {
+    document.getElementById('divTxSource').style.display = 'block';
+    document.getElementById('divTxDest').style.display = 'none';
+  } else {
+    document.getElementById('divTxSource').style.display = 'block';
+    document.getElementById('divTxDest').style.display = 'block';
+  }
+}
+
+async function executeTransaction() {
+  const type = document.getElementById('txType').value;
+  const itemKey = document.getElementById('txItemKey').value;
+  const src = document.getElementById('txSource').value;
+  const dest = document.getElementById('txDest').value;
+  const codesStr = document.getElementById('txCodes').value.trim().toUpperCase().replace(/\s+/g, '');
+  const reason = document.getElementById('txReason').value.trim();
+
+  if(!codesStr) { showToast('❌ Vui lòng nhập mã tài sản giao dịch', true); return; }
+  if(!reason) { showToast('❌ Vui lòng nhập lý do nhập/xuất điều chuyển', true); return; }
+
+  const inputCodes = codesStr.split(',').filter(Boolean);
+  const cfg = await loadFixedCfg();
+
+  // Biến mảng xử lý chuỗi mã
+  let srcCodes = [];
+  let destCodes = [];
+
+  const isPda = (itemKey === 'pda');
+  
+  // Đọc danh sách mã hiện tại
+  if (type === 'XUAT' || type === 'LUAN_CHUYEN') {
+    const currentSrcStr = isPda ? (cfg.tl[src]?.[itemKey] || '') : (cfg.wh[src]?.[itemKey] || '');
+    srcCodes = currentSrcStr.split(',').filter(Boolean);
+    // Kiểm tra xem trong kho/TL nguồn có thực sự tồn tại mã tài sản này không
+    for(let code of inputCodes) {
+      if(!srcCodes.includes(code)) {
+        showToast(`❌ Lỗi: Mã tài sản ${code} không tồn tại ở Nguồn đã chọn!`, true);
+        return;
+      }
+    }
+  }
+
+  if (type === 'NHAP' || type === 'LUAN_CHUYEN') {
+    const currentDestStr = isPda ? (cfg.tl[dest]?.[itemKey] || '') : (cfg.wh[dest]?.[itemKey] || '');
+    destCodes = currentDestStr.split(',').filter(Boolean);
+  }
+
+  // Thực hiện cộng trừ chuỗi mã định mức
+  if (type === 'XUAT' || type === 'LUAN_CHUYEN') {
+    srcCodes = srcCodes.filter(c => !inputCodes.includes(c));
+    if(isPda) cfg.tl[src][itemKey] = srcCodes.join(',');
+    else cfg.wh[src][itemKey] = srcCodes.join(',');
+  }
+
+  if (type === 'NHAP' || type === 'LUAN_CHUYEN') {
+    // Tránh trùng mã tài sản ở đích đến
+    inputCodes.forEach(c => { if(!destCodes.includes(c)) destCodes.push(c); });
+    if(isPda) cfg.tl[dest][itemKey] = destCodes.join(',');
+    else cfg.wh[dest][itemKey] = destCodes.join(',');
+  }
+
+  // Lưu lại cấu hình định mức mới sau biến động
+  await dbSet('fixed_cfg_v2', cfg);
+  _fixedCfg = cfg;
+
+  // Ghi nhật ký lịch sử giao dịch vào Firebase
+  const txId = 'tx_' + Date.now();
+  const txLog = {
+    id: txId,
+    type, itemKey,
+    src: (type === 'NHAP') ? '—' : (isPda ? USERS[src].name : `Kho ${src}`),
+    dest: (type === 'XUAT') ? '—' : (isPda ? USERS[dest].name : `Kho ${dest}`),
+    codes: codesStr,
+    reason,
+    ts: new Date().toISOString(),
+    by: USERS[curUser].name
+  };
+
+  await dbSet(`asset_tx_logs/${txId}`, txLog);
+  showToast('⚡ Giao dịch thành công, định mức tài sản đã tự động cập nhật!');
+  
+  // Clear form và reload
+  document.getElementById('txCodes').value = '';
+  document.getElementById('txReason').value = '';
+  renderTxLogHistory();
+}
+
+async function renderTxLogHistory() {
+  const logs = await dbGet('asset_tx_logs') || {};
+  const sorted = Object.values(logs).sort((a,b) => new Date(b.ts) - new Date(a.ts));
+  
+  const head = `<thead><tr>
+    <th>Thời gian</th><th>Loại GD</th><th>Thiết bị</th><th>Nguồn</th><th>Đích</th><th style="text-align:left">Mã Tài Sản</th><th style="text-align:left">Lý Do</th><th>Người Thực Hiện</th>
+  </tr></thead>`;
+  
+  let body = '<tbody>';
+  sorted.forEach(l => {
+    let typeBadge = `<span class="badge-ok">${l.type}</span>`;
+    if(l.type==='XUAT') typeBadge = `<span class="badge-warn" style="background:rgba(255,71,87,0.12); border-color:var(--red); color:var(--red);">${l.type}</span>`;
+    if(l.type==='LUAN_CHUYEN') typeBadge = `<span class="badge-warn">${l.type}</span>`;
+
+    const it = ITEMS.find(i=>i.k===l.itemKey);
+    const timeStr = new Date(l.ts).toLocaleString('vi-VN');
+
+    body += `<tr>
+      <td>${timeStr}</td>
+      <td>${typeBadge}</td>
+      <td style="font-weight:600">${it?it.l:l.itemKey}</td>
+      <td>${l.src}</td>
+      <td>${l.dest}</td>
+      <td style="text-align:left; color:var(--yellow);">${l.codes}</td>
+      <td style="text-align:left; white-space:normal;">${l.reason}</td>
+      <td>${l.by}</td>
+    </tr>`;
+  });
+  body += '</tbody>';
+  document.getElementById('txHistoryTable').innerHTML = head + body;
+}
+
+// ════ FIXED PANEL (TL VIEW KIỂM TRA ĐỊNH MỨC) ════
 async function buildFixedPanel() {
   const grid = document.getElementById('fixedGrid');
   const cfg  = await loadFixedCfg();
@@ -869,84 +1099,116 @@ async function buildFixedPanel() {
   const fixedItems = ITEMS.filter(it=>FIXED_ITEM_KEYS.includes(it.k));
   const myWhs = USERS[curUser].whs;
 
-  if (!myWhs.length) {
-    grid.innerHTML='<div style="color:var(--muted);padding:16px;">Chưa được phân công kho.</div>';
-    return;
-  }
-
-  // Aggregate actual data for this TL's whs
-  const whData={};
+  // Lấy dữ liệu thực tế nhập của ngày hôm nay từ giao diện hoặc data đã lưu
+  const actualWhData={};
   myWhs.forEach(wh=>{
-    whData[wh]={};
-    ITEMS.forEach(it=>whData[wh][it.k]=0);
-    TL_USERS.forEach(uid=>{
-      const ud=allData[uid]||{};
-      if (ud[wh]) ITEMS.forEach(it=>whData[wh][it.k]+=(ud[wh][it.k]||0));
-    });
-    // Also pick up current unsaved inputs
-    fixedItems.forEach(it=>{
+    actualWhData[wh]={};
+    ITEMS.forEach(it=>{
+      if(it.k==='pda') return;
       const el=document.getElementById(`i_${wh}_${it.k}`);
-      if (el&&el.value!=='') whData[wh][it.k]=parseInt(el.value)||0;
+      actualWhData[wh][it.k] = el && el.value !== '' ? (parseInt(el.value)||0) : (allData[curUser]?.[wh]?.[it.k]||0);
     });
   });
 
+  const elPda = document.getElementById(`i_pda_${curUser}`);
+  const actualTlPda = elPda && elPda.value !== '' ? (parseInt(elPda.value)||0) : (allData[curUser]?._pda_tl||0);
+
   let anyWarn = false;
-  const html = myWhs.map(wh=>{
-    const expected = cfg[wh]||{};
-    let hasWarn = false;
+  let html = '';
 
-    const rowsHeader = `<div class="fixed-row-header">
-      <div>Thiết bị</div><div style="text-align:center">Định mức</div>
-      <div style="text-align:center">Thực tế</div><div style="text-align:center">Chênh lệch</div>
-      <div style="text-align:center">Trạng thái</div>
-    </div>`;
+  const rowsHeader = `<div class="fixed-row-header">
+    <div>Tài sản thiết bị</div><div style="text-align:left">Danh sách Mã định mức</div>
+    <div style="text-align:center">Định mức</div><div style="text-align:center">Thực tế</div><div style="text-align:center">Chênh lệch</div>
+    <div style="text-align:center">Trạng thái</div>
+  </div>`;
 
-    const rows = fixedItems.map(it=>{
-      const exp = expected[it.k];
-      if (exp===undefined||exp===0) return ''; // chưa cấu hình
-      const act  = whData[wh][it.k];
-      const diff = act - exp;
-      const warn = diff !== 0;
-      if (warn) { hasWarn=true; anyWarn=true; }
-      const noteKey = `${wh}_${it.k}`;
-      const existNote = notes[noteKey]?.text||'';
-      return `<div class="fixed-row ${warn?'warn-row':''}">
-        <div class="fixed-label">${it.l}</div>
-        <div class="fixed-exp">${exp}</div>
-        <div class="fixed-act ${warn?'fixed-warn-val':'fixed-ok'}">${act}</div>
-        <div class="fixed-diff ${diff>0?'diff-plus':diff<0?'diff-minus':''}">
-          ${diff===0?'—':(diff>0?'+':'')+diff}
+  // 1. Khối hiển thị PDA cá nhân của Teamlead
+  const pdaExpStr = cfg.tl?.[curUser]?.[ 'pda' ] || '';
+  const pdaExp = pdaExpStr ? pdaExpStr.split(',').filter(Boolean).length : 0;
+  
+  if(pdaExp > 0) {
+    const diff = actualTlPda - pdaExp;
+    const warn = diff !== 0;
+    if(warn) anyWarn = true;
+    const existNote = notes[`${curUser}_pda`]?.text || '';
+
+    html += `<div class="fixed-kho-card" style="border-color:${warn?'rgba(255,107,53,.5)':'var(--accent)'}; margin-bottom:16px;">
+      <div class="fixed-kho-head" style="background:#113629">
+        <div class="fixed-kho-name">📱 Thiết Bị Sở Hữu Cá Nhân (Teamlead)</div>
+        ${warn ? '<span class="badge-warn">⚠ Lệch số PDA</span>' : '<span class="badge-ok">✓ Đạt định mức cá nhân</span>'}
+      </div>
+      <div class="fixed-kho-body">${rowsHeader}
+        <div class="fixed-row ${warn?'warn-row':''}">
+          <div class="fixed-label">PDA cá nhân</div>
+          <div class="fixed-codes" title="${pdaExpStr}">${pdaExpStr}</div>
+          <div class="fixed-exp">${pdaExp}</div>
+          <div class="fixed-act ${warn?'fixed-warn-val':'fixed-ok'}">${actualTlPda}</div>
+          <div class="fixed-diff ${diff>0?'diff-plus':diff<0?'diff-minus':''}">
+            ${diff===0?'—':(diff>0?'+':'')+diff}
+          </div>
+          <div>
+            ${warn ? `<span class="badge-warn" onclick="openNote('${curUser}','pda','PDA Cá Nhân')">⚠ Ghi chú${existNote?' ✓':''}</span>` : '<span class="badge-ok">✓ Đạt</span>'}
+          </div>
         </div>
-        <div>
-          ${warn
-            ? `<span class="badge-warn" onclick="openNote('${wh}','${it.k}','${it.l}')">
-                ⚠ Ghi chú${existNote?' ✓':''}</span>`
-            : '<span class="badge-ok">✓ Đạt</span>'}
+      </div>
+    </div>`;
+  }
+
+  // 2. Khối hiển thị các kho vật tư phụ trách
+  if (myWhs.length > 0) {
+    html += myWhs.map(wh=>{
+      const expected = cfg.wh?.[wh] || {};
+      let hasWarn = false;
+
+      const rows = fixedItems.map(it=>{
+        const expStr = expected[it.k] || '';
+        const exp = expStr ? expStr.split(',').filter(Boolean).length : 0;
+        if (exp === 0) return ''; 
+
+        const act  = actualWhData[wh][it.k];
+        const diff = act - exp;
+        const warn = diff !== 0;
+        if (warn) { hasWarn=true; anyWarn=true; }
+        
+        const noteKey = `${wh}_${it.k}`;
+        const existNote = notes[noteKey]?.text||'';
+
+        return `<div class="fixed-row ${warn?'warn-row':''}">
+          <div class="fixed-label">${it.l}</div>
+          <div class="fixed-codes" title="${expStr}">${expStr}</div>
+          <div class="fixed-exp">${exp}</div>
+          <div class="fixed-act ${warn?'fixed-warn-val':'fixed-ok'}">${act}</div>
+          <div class="fixed-diff ${diff>0?'diff-plus':diff<0?'diff-minus':''}">
+            ${diff===0?'—':(diff>0?'+':'')+diff}
+          </div>
+          <div>
+            ${warn
+              ? `<span class="badge-warn" onclick="openNote('${wh}','${it.k}','${it.l}')">⚠ Ghi chú${existNote?' ✓':''}</span>`
+              : '<span class="badge-ok">✓ Đạt</span>'}
+          </div>
+        </div>`;
+      }).filter(Boolean).join('');
+
+      const configuredCount = fixedItems.filter(it=>(expected[it.k] || '').length > 0).length;
+
+      return `<div class="fixed-kho-card" style="border-color:${hasWarn?'rgba(255,107,53,.5)':'var(--border)'}">
+        <div class="fixed-kho-head">
+          <div class="fixed-kho-name">🏪 Kho ${wh}</div>
+          ${hasWarn ? '<span class="badge-warn">⚠ Có lệch số thiết bị</span>' : configuredCount>0?'<span class="badge-ok">✓ Đạt định mức kho</span>':'<span style="font-size:11px;color:var(--muted)">Chưa có định mức</span>'}
+        </div>
+        <div class="fixed-kho-body">
+          ${configuredCount>0 ? rowsHeader+rows : '<div style="font-size:12px;color:var(--muted);padding:8px;">Admin chưa cấu hình danh sách thiết bị cố định cho kho này.</div>'}
         </div>
       </div>`;
-    }).filter(Boolean).join('');
+    }).join('');
+  }
 
-    const configuredCount = fixedItems.filter(it=>(expected[it.k]||0)>0).length;
-
-    return `<div class="fixed-kho-card" style="border-color:${hasWarn?'rgba(255,107,53,.5)':'var(--border)'}">
-      <div class="fixed-kho-head">
-        <div class="fixed-kho-name">🏪 Kho ${wh}</div>
-        ${hasWarn
-          ? '<span class="badge-warn" style="cursor:default">⚠ Có lệch số</span>'
-          : configuredCount>0?'<span class="badge-ok">✓ Đạt định mức</span>':'<span style="font-size:11px;color:var(--muted)">Chưa có định mức</span>'}
-      </div>
-      <div class="fixed-kho-body">
-        ${configuredCount>0 ? rowsHeader+rows : '<div style="font-size:12px;color:var(--muted);padding:8px;">Admin chưa cấu hình định mức cho kho này.</div>'}
-      </div>
-    </div>`;
-  }).join('');
-
-  const banner = !anyWarn && myWhs.some(wh=>fixedItems.some(it=>(cfg[wh]?.[it.k]||0)>0))
+  const banner = !anyWarn 
     ? `<div style="background:rgba(0,208,132,.1);border:1px solid rgba(0,208,132,.3);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--accent);margin-bottom:14px;">
-        ✅ Tất cả thiết bị đạt định mức — không có cảnh báo.
+        ✅ Tất cả thiết bị cố định kho và cá nhân đạt định mức chuẩn — không có cảnh báo chênh lệch.
        </div>` : '';
 
-  grid.innerHTML = banner + (html||'<div style="color:var(--muted);padding:16px;">Không có dữ liệu.</div>');
+  grid.innerHTML = banner + (html||'<div style="color:var(--muted);padding:16px;">Không có dữ liệu định mức.</div>');
 }
 
 // ════ NOTE MODAL ════
@@ -954,7 +1216,7 @@ async function openNote(wh, k, label) {
   _noteCtx = {wh, k};
   const date = today();
   const notes = await dbGet(`notes/${date}`)||{};
-  document.getElementById('noteSub').textContent = `Kho ${wh} — ${label}`;
+  document.getElementById('noteSub').textContent = `${wh.includes('_') ? '' : 'Kho '}${wh} — ${label}`;
   document.getElementById('noteText').value = notes[`${wh}_${k}`]?.text||'';
   document.getElementById('noteModal').classList.add('on');
 }
@@ -968,7 +1230,7 @@ async function saveNote() {
   notes[`${wh}_${k}`] = { text, by:curUser, ts:new Date().toISOString() };
   await dbSet(`notes/${date}`,notes);
   closeNote();
-  showToast('✅ Đã lưu ghi chú');
+  showToast('✅ Đã lưu ghi chú thành công');
   buildFixedPanel();
 }
 
@@ -982,13 +1244,15 @@ function initReportControls() {
   const ys = document.getElementById('rptYear');
   const yr = new Date().getFullYear();
   for(let y=yr;y>=yr-3;y--){const o=document.createElement('option');o.value=y;o.textContent=y;ys.appendChild(o);}
-  // Week date default
+  
+  document.getElementById('rptDayDate').value = today();
   document.getElementById('rptWeekDate').value = today();
   onRptTypeChange();
 }
 
 function onRptTypeChange() {
   const t = document.getElementById('rptType').value;
+  document.getElementById('rptDayDate').style.display  = t==='day'?'':'none';
   document.getElementById('rptWeekDate').style.display = t==='week'?'':'none';
   document.getElementById('rptMonth').style.display    = t==='month'?'':'none';
   document.getElementById('rptYear').style.display     = t==='month'?'':'none';
@@ -997,7 +1261,10 @@ function onRptTypeChange() {
 function getDateRange() {
   const t = document.getElementById('rptType').value;
   const dates = [];
-  if (t==='week') {
+  if (t==='day') {
+    const d = document.getElementById('rptDayDate').value||today();
+    dates.push(d);
+  } else if (t==='week') {
     const base = document.getElementById('rptWeekDate').value||today();
     const d = new Date(base);
     const dow = d.getDay()||7; // Monday=1
@@ -1007,7 +1274,7 @@ function getDateRange() {
     const yr = parseInt(document.getElementById('rptYear').value)||new Date().getFullYear();
     const mo = parseInt(document.getElementById('rptMonth').value)||(new Date().getMonth()+1);
     const last = new Date(yr,mo,0).getDate();
-    for(let d=1;d<=last;d++) dates.push(`${yr}-${String(mo).padStart(2,'0')}-${String(d).padStart(2,'0')}`);
+    for(let d=1;d<=last;d++) dates.push(`${yr}-${String(mo).padStart(2,'0')}-${String(d).padStart(2,'0 Haus')}`);
   }
   return dates;
 }
@@ -1018,71 +1285,73 @@ function fmtDate(d) {
 
 async function renderReport() {
   const content = document.getElementById('reportContent');
-  content.innerHTML = `<div style="color:var(--muted);padding:20px;text-align:center;">⏳ Đang tải dữ liệu...</div>`;
+  content.innerHTML = `<div style="color:var(--muted);padding:20px;text-align:center;">⏳ Đang tải dữ liệu báo cáo...</div>`;
 
   const dates = getDateRange();
-  const t = document.getElementById('rptType').value;
   const fixedCfg = await loadFixedCfg();
 
-  // Load all dates in parallel
   const allDayData = {};
   await Promise.all(dates.map(async d => { allDayData[d]=await dbGet(`reports/${d}`)||{}; }));
   const allNotes = {};
   await Promise.all(dates.map(async d => { allNotes[d]=await dbGet(`notes/${d}`)||{}; }));
 
-  // Per-date aggregates
   const dateRows = [];
-  const periodTotals = {}; ITEMS.forEach(it=>periodTotals[it.k]=0);
 
   for (const d of dates) {
     const dayData = allDayData[d];
-    const hasAnyData = TL_USERS.some(uid=>USERS[uid].whs.some(wh=>ITEMS.some(it=>(dayData[uid]?.[wh]?.[it.k]||0)>0)));
+    // Check có dữ liệu không (gồm kho vật tư hoặc pda cá nhân)
+    const hasAnyData = TL_USERS.some(uid => {
+      const ud = dayData[uid] || {};
+      if(ud._submitted) return true;
+      return false;
+    });
     if (!hasAnyData) continue;
 
     const whAgg={};
     ALL_WHS.forEach(wh=>{whAgg[wh]={};ITEMS.forEach(it=>whAgg[wh][it.k]=0);});
     const dayTotals={}; ITEMS.forEach(it=>dayTotals[it.k]=0);
     const tlOwner={};
+    const tlPdaActual={};
 
     TL_USERS.forEach(uid=>{
       const ud=dayData[uid]||{};
+      tlPdaActual[uid] = ud._pda_tl || 0;
+      dayTotals['pda'] += tlPdaActual[uid];
+
       (USERS[uid].whs||[]).forEach(wh=>{
         tlOwner[wh]=USERS[uid].name;
-        ITEMS.forEach(it=>{const v=ud[wh]?.[it.k]||0;whAgg[wh][it.k]+=v;dayTotals[it.k]+=v;periodTotals[it.k]+=v;});
+        ITEMS.forEach(it=>{
+          if(it.k==='pda') return;
+          const v=ud[wh]?.[it.k]||0;
+          whAgg[wh][it.k]+=v;
+          dayTotals[it.k]+=v;
+        });
       });
     });
 
-    dateRows.push({d,whAgg,dayTotals,tlOwner,dayData,notes:allNotes[d]});
+    dateRows.push({d,whAgg,dayTotals,tlOwner,dayData,tlPdaActual,notes:allNotes[d]});
   }
 
   if (!dateRows.length) {
-    content.innerHTML='<div style="color:var(--muted);padding:20px;text-align:center;">Không có dữ liệu trong kỳ đã chọn.</div>';
+    content.innerHTML='<div style="color:var(--muted);padding:20px;text-align:center;">Không có dữ liệu báo cáo vật tư trong ngày/kỳ đã chọn.</div>';
     return;
   }
 
   let html = '';
 
-  // ── Tổng hợp toàn kỳ ──
+  // ── Tổng hợp dữ liệu theo cột ngày ──
   html += `<div class="rpt-section">
-    <div class="rpt-section-title">TỔNG HỢP TOÀN KỲ (${dateRows.length} ngày có dữ liệu)</div>
-    <div class="rpt-summary-grid">
-      ${ITEMS.map(it=>`<div class="rpt-sum-card">
-        <div class="rpt-sum-label"><span class="cdot ${it.c}"></span>${it.l}</div>
-        <div class="rpt-sum-val">${periodTotals[it.k].toLocaleString()}</div>
-      </div>`).join('')}
-    </div>
+    <div class="rpt-section-title">BẢNG TỔNG HỢP VẬT TƯ CÁC NGÀY (ĐÃ LƯỢC BỎ TỔNG KỲ)</div>
     <div class="tscroll"><table class="dtable">
-      <thead><tr><th>Vật tư</th>${dateRows.map(r=>`<th>${fmtDate(r.d).slice(0,8)}</th>`).join('')}<th>Tổng KỲ</th></tr></thead>
+      <thead><tr><th>Loại Vật tư / Tài sản</th>${dateRows.map(r=>`<th>${fmtDate(r.d).slice(0,14)}</th>`).join('')}</tr></thead>
       <tbody>
         ${ITEMS.map(it=>`<tr>
           <td style="font-weight:600">${it.l}</td>
           ${dateRows.map(r=>{const v=r.dayTotals[it.k];return`<td class="${v?'':'vz'}">${v||'—'}</td>`;}).join('')}
-          <td style="font-weight:700">${periodTotals[it.k].toLocaleString()}</td>
         </tr>`).join('')}
         <tr class="trow">
-          <td>TỔNG NGÀY</td>
+          <td>TỔNG SỐ LƯỢNG NGÀY</td>
           ${dateRows.map(r=>`<td>${Object.values(r.dayTotals).reduce((a,b)=>a+b,0).toLocaleString()}</td>`).join('')}
-          <td>${Object.values(periodTotals).reduce((a,b)=>a+b,0).toLocaleString()}</td>
         </tr>
       </tbody>
     </table></div>
@@ -1090,62 +1359,92 @@ async function renderReport() {
 
   // ── Chi tiết từng ngày ──
   html += `<div class="rpt-section">
-    <div class="rpt-section-title">CHI TIẾT TỪNG NGÀY</div>`;
+    <div class="rpt-section-title">CHI TIẾT DỮ LIỆU TỪNG ĐỐI TƯỢNG</div>`;
 
-  dateRows.forEach(({d,whAgg,dayTotals,tlOwner,dayData,notes})=>{
+  dateRows.forEach(({d,whAgg,dayTotals,tlOwner,dayData,tlPdaActual,notes})=>{
     const tlStatus = TL_USERS.map(uid=>{
       const ok=dayData[uid]?._submitted;
       return `<span class="rpt-tl-chip ${ok?'rpt-tl-ok':'rpt-tl-no'}">${USERS[uid].name}${ok?' ✓':' ✗'}</span>`;
     }).join('');
 
-    const fixedWarnCount = ALL_WHS.reduce((count,wh)=>{
+    // Tính số lệch kho
+    let fixedWarnCount = ALL_WHS.reduce((count,wh)=>{
       return count + FIXED_ITEM_KEYS.filter(k=>{
-        const exp=fixedCfg[wh]?.[k];
-        return exp!==undefined&&exp>0&&whAgg[wh][k]!==exp;
+        const expStr=fixedCfg.wh?.[wh]?.[k] || '';
+        const exp = expStr ? expStr.split(',').filter(Boolean).length : 0;
+        return exp>0&&whAgg[wh][k]!==exp;
       }).length;
     },0);
+
+    // Tính thêm số lệch pda cá nhân teamlead
+    TL_USERS.forEach(uid=>{
+      const expStr = fixedCfg.tl?.[uid]?.['pda'] || '';
+      const exp = expStr ? expStr.split(',').filter(Boolean).length : 0;
+      if(exp > 0 && tlPdaActual[uid] !== exp) fixedWarnCount++;
+    });
 
     html += `<div class="rpt-day-block">
       <div class="rpt-day-hd">
         <div class="rpt-day-date">📅 ${fmtDate(d)}</div>
         <div class="rpt-day-status">${tlStatus}</div>
-        ${fixedWarnCount?`<span class="badge-warn" style="cursor:default">⚠ ${fixedWarnCount} lệch TB</span>`:''}
+        ${fixedWarnCount?`<span class="badge-warn" style="cursor:default">⚠ Phát hiện ${fixedWarnCount} thiết bị lệch định mức</span>`:''}
       </div>
       <div class="tscroll"><table class="dtable">
         <thead><tr>
-          <th>Kho</th><th>Teamlead</th>
+          <th>Đối tượng quản lý</th><th>Phân loại/Teamlead</th>
           ${ITEMS.map(it=>`<th>${it.l}</th>`).join('')}
         </tr></thead><tbody>`;
 
+    // Render các kho
     ALL_WHS.forEach(wh=>{
       const hasData=ITEMS.some(it=>whAgg[wh][it.k]>0);
       if (!hasData) return;
 
-      // Check if any fixed items have notes
       const noteIcons = FIXED_ITEM_KEYS.map(k=>{
-        const n=notes[`${wh}_${k}`];
-        if (!n?.text) return '';
+        const n=notes[`${wh}_${k}`]; if (!n?.text) return '';
         const it=ITEMS.find(i=>i.k===k);
         return `<span title="${it.l}: ${n.text}" style="cursor:help">📝</span>`;
       }).filter(Boolean).join('');
 
       html += `<tr>
-        <td>🏪 ${wh} ${noteIcons}</td>
-        <td style="font-size:11px;color:var(--muted)">${tlOwner[wh]||'—'}</td>
+        <td>🏪 Kho ${wh} ${noteIcons}</td>
+        <td style="font-size:11px;color:var(--muted)">TL: ${tlOwner[wh]||'—'}</td>
         ${ITEMS.map(it=>{
+          if(it.k==='pda') return `<td class="vz">—</td>`; // Kho không có pda cá nhân
           const v=whAgg[wh][it.k];
-          const isFixed=FIXED_ITEM_KEYS.includes(it.k);
-          const exp=isFixed?(fixedCfg[wh]?.[it.k]):null;
-          const warn=exp!==null&&exp>0&&v!==exp;
-          return `<td class="${warn?'warn-val':v?'':'vz'}">${v||'—'}${warn?` <small>(/${exp})</small>`:''}</td>`;
+          const expStr = fixedCfg.wh?.[wh]?.[it.k] || '';
+          const exp = expStr ? expStr.split(',').filter(Boolean).length : 0;
+          const warn = exp>0 && v!==exp;
+          return `<td class="${warn?'warn-val':v?'':'vz'}">${v||'—'}${warn?` <small>(/đm:${exp})</small>`:''}</td>`;
         }).join('')}
       </tr>`;
     });
 
-    html += `<tr class="trow"><td>TỔNG</td><td></td>${ITEMS.map(it=>`<td>${dayTotals[it.k]||'—'}</td>`).join('')}</tr>`;
+    // Render các PDA teamlead cá nhân
+    TL_USERS.forEach(uid => {
+      const v = tlPdaActual[uid];
+      const expStr = fixedCfg.tl?.[uid]?.['pda'] || '';
+      const exp = expStr ? expStr.split(',').filter(Boolean).length : 0;
+      if(exp===0 && v===0) return; // Không có dữ liệu thì bỏ qua
+
+      const n = notes[`${uid}_pda`];
+      const noteIcon = n?.text ? `<span title="PDA: ${n.text}" style="cursor:help">📝</span>` : '';
+      const warn = exp > 0 && v !== exp;
+
+      html += `<tr>
+        <td>👤 Teamlead: ${USERS[uid].name} ${noteIcon}</td>
+        <td style="font-size:11px;color:var(--muted)">Tài sản sở hữu cá nhân</td>
+        ${ITEMS.map(it=>{
+          if(it.k!=='pda') return `<td class="vz">—</td>`;
+          return `<td class="${warn?'warn-val':v?'':'vz'}">${v||'—'}${warn?` <small>(/đm:${exp})</small>`:''}</td>`;
+        }).join('')}
+      </tr>`;
+    });
+
+    html += `<tr class="trow"><td>TỔNG HỢP HỆ THỐNG</td><td></td>${ITEMS.map(it=>`<td>${dayTotals[it.k]||'—'}</td>`).join('')}</tr>`;
     html += `</tbody></table></div>`;
 
-    // Ghi chú lệch số nếu có
+    // Thu thập ghi chú lệch số trong ngày
     const noteEntries = [];
     ALL_WHS.forEach(wh=>{
       FIXED_ITEM_KEYS.forEach(k=>{
@@ -1153,15 +1452,20 @@ async function renderReport() {
         if (n?.text){ const it=ITEMS.find(i=>i.k===k); noteEntries.push(`Kho ${wh} / ${it.l}: ${n.text}`); }
       });
     });
+    TL_USERS.forEach(uid=>{
+      const n = notes[`${uid}_pda`];
+      if (n?.text) { noteEntries.push(`Teamlead ${USERS[uid].name} / PDA cá nhân: ${n.text}`); }
+    });
+
     if (noteEntries.length) {
       html += `<div style="margin-top:8px;padding:8px 10px;background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.3);border-radius:6px;font-size:11px;line-height:1.8;">
-        📝 <strong>Ghi chú lệch số:</strong><br>${noteEntries.join('<br>')}
+        📝 <strong>Ghi chú giải trình chênh lệch ngày:</strong><br>${noteEntries.join('<br>')}
       </div>`;
     }
 
-    html += '</div>'; // end rpt-day-block
+    html += '</div>';
   });
-  html += '</div>'; // end rpt-section
+  html += '</div>';
 
   content.innerHTML = html;
 }
@@ -1169,76 +1473,79 @@ async function renderReport() {
 function printReport() {
   const t = document.getElementById('rptType').value;
   let subtitle = '';
-  if (t==='week') {
-    const base=document.getElementById('rptWeekDate').value||today();
-    subtitle = `Tuần chứa ngày ${fmtDate(base)}`;
+  if (t==='day') {
+    subtitle = `Báo cáo Ngày ${fmtDate(document.getElementById('rptDayDate').value||today())}`;
+  } else if (t==='week') {
+    subtitle = `Báo cáo Tuần chứa ngày ${fmtDate(document.getElementById('rptWeekDate').value||today())}`;
   } else {
-    const mo=document.getElementById('rptMonth').value;
-    const yr=document.getElementById('rptYear').value;
-    subtitle = `Tháng ${mo}/${yr}`;
+    subtitle = `Báo cáo Tháng ${document.getElementById('rptMonth').value}/${document.getElementById('rptYear').value}`;
   }
   document.getElementById('phSubtitle').textContent = subtitle;
   document.getElementById('phTime').textContent = new Date().toLocaleString('vi-VN');
   window.print();
 }
 
-// ════ EXPORT CSV BÁO CÁO KỲ ════
+// ════ EXPORT CSV BÁO CÁO KỲ (BỎ TỔNG KỲ) ════
 async function exportReportCSV() {
   const dates = getDateRange();
   const t = document.getElementById('rptType').value;
   const fixedCfg = await loadFixedCfg();
 
   const q = v => `"${String(v===null||v===undefined?'':v).replace(/"/g,'""')}"`;
-
   const rows = [];
+  
   // Header
-  rows.push(['Kỳ','Ngày','Kho','Teamlead',...ITEMS.map(it=>it.l),'Cảnh báo lệch số','Ghi chú'].map(q).join(','));
+  rows.push(['Kỳ dữ liệu','Ngày','Đối Tượng','Phân loại quản lý', ...ITEMS.map(it=>it.l),'Cảnh báo lệch số','Ghi chú'].map(q).join(','));
 
-  // Tên kỳ
   let kyLabel = '';
-  if (t==='week') {
-    const base=document.getElementById('rptWeekDate').value||today();
-    kyLabel=`Tuần ${fmtDate(base)}`;
+  if (t==='day') {
+    kyLabel=`Ngày ${document.getElementById('rptDayDate').value||today()}`;
+  } else if (t==='week') {
+    kyLabel=`Tuần ${document.getElementById('rptWeekDate').value||today()}`;
   } else {
-    const mo=document.getElementById('rptMonth').value;
-    const yr=document.getElementById('rptYear').value;
-    kyLabel=`Tháng ${mo}/${yr}`;
+    kyLabel=`Tháng ${document.getElementById('rptMonth').value}/${document.getElementById('rptYear').value}`;
   }
-
-  const periodTotals={}; ITEMS.forEach(it=>periodTotals[it.k]=0);
 
   for (const d of dates) {
     const dayData = await dbGet(`reports/${d}`)||{};
     const notes   = await dbGet(`notes/${d}`)||{};
-    const hasAnyData = TL_USERS.some(uid=>USERS[uid].whs.some(wh=>ITEMS.some(it=>(dayData[uid]?.[wh]?.[it.k]||0)>0)));
+    const hasAnyData = TL_USERS.some(uid=>dayData[uid]?._submitted);
     if (!hasAnyData) continue;
 
-    // Aggregate per wh
     const whAgg={};
     ALL_WHS.forEach(wh=>{whAgg[wh]={tl:'',data:{}};ITEMS.forEach(it=>whAgg[wh].data[it.k]=0);});
+    const dayTotals={}; ITEMS.forEach(it=>dayTotals[it.k]=0);
+    const tlPdaActual={};
+
     TL_USERS.forEach(uid=>{
+      const ud=dayData[uid]||{};
+      tlPdaActual[uid] = ud._pda_tl || 0;
+      dayTotals['pda'] += tlPdaActual[uid];
+      
       (USERS[uid].whs||[]).forEach(wh=>{
         whAgg[wh].tl=USERS[uid].name;
-        const ud=dayData[uid]||{};
-        ITEMS.forEach(it=>whAgg[wh].data[it.k]+=(ud[wh]?.[it.k]||0));
+        ITEMS.forEach(it=>{
+          if(it.k!=='pda') { whAgg[wh].data[it.k]+=(ud[wh]?.[it.k]||0); dayTotals[it.k]+=(ud[wh]?.[it.k]||0); }
+        });
       });
     });
 
-    const dayTotals={}; ITEMS.forEach(it=>dayTotals[it.k]=0);
-
+    // Push dòng kho
     ALL_WHS.forEach(wh=>{
       const agg=whAgg[wh];
-      const hasData=ITEMS.some(it=>agg.data[it.k]>0);
-      if (!hasData) return;
+      if (!ITEMS.some(it=>agg.data[it.k]>0)) return;
 
-      ITEMS.forEach(it=>{dayTotals[it.k]+=agg.data[it.k];periodTotals[it.k]+=agg.data[it.k];});
+      const itemVals = ITEMS.map(it=> it.k==='pda' ? '—' : agg.data[it.k]);
 
       const warns=FIXED_ITEM_KEYS.filter(k=>{
-        const exp=fixedCfg[wh]?.[k];
-        return exp!==undefined&&exp>0&&agg.data[k]!==exp;
+        const expStr=fixedCfg.wh?.[wh]?.[k] || '';
+        const exp = expStr ? expStr.split(',').filter(Boolean).length : 0;
+        return exp>0&&agg.data[k]!==exp;
       }).map(k=>{
         const it=ITEMS.find(i=>i.k===k);
-        const exp=fixedCfg[wh][k],act=agg.data[k],diff=act-exp;
+        const expStr=fixedCfg.wh?.[wh]?.[k] || '';
+        const exp = expStr ? expStr.split(',').filter(Boolean).length : 0;
+        const act=agg.data[k],diff=act-exp;
         return `${it.l}: ${act}/${exp}(${diff>0?'+':''}${diff})`;
       });
 
@@ -1247,22 +1554,35 @@ async function exportReportCSV() {
         const it=ITEMS.find(i=>i.k===k);return`${it.l}: ${n.text}`;
       }).filter(Boolean);
 
-      rows.push([kyLabel,d,wh,agg.tl||'—',...ITEMS.map(it=>agg.data[it.k]),warns.join(' | '),noteTexts.join(' | ')].map(q).join(','));
+      rows.push([kyLabel,d,`Kho ${wh}`,`TL: ${agg.tl||'—'}`,...itemVals,warns.join(' | '),noteTexts.join(' | ')].map(q).join(','));
     });
 
-    // Daily subtotal
-    rows.push([kyLabel,d,'TỔNG NGÀY','—',...ITEMS.map(it=>dayTotals[it.k]),'',''].map(q).join(','));
+    // Push dòng Teamlead PDA cá nhân
+    TL_USERS.forEach(uid=>{
+      const act = tlPdaActual[uid];
+      const expStr = fixedCfg.tl?.[uid]?.['pda'] || '';
+      const exp = expStr ? expStr.split(',').filter(Boolean).length : 0;
+      if(exp===0 && act===0) return;
+
+      const itemVals = ITEMS.map(it=> it.k==='pda' ? act : '—');
+      let warn = (exp>0 && act!==exp) ? `PDA: ${act}/${exp}(${act-exp>0?'+':''}${act-exp})` : '';
+      const noteText = notes[`${uid}_pda`]?.text ? `PDA: ${notes[`${uid}_pda`].text}` : '';
+
+      rows.push([kyLabel,d,`Teamlead: ${USERS[uid].name}`,'Tài sản cá nhân',...itemVals,warn,noteText].map(q).join(','));
+    });
+
+    // Báo cáo tổng ngày (Vẫn giữ tổng ngày theo yêu cầu)
+    rows.push([kyLabel,d,'TỔNG SỐ LƯỢNG NGÀY','—',...ITEMS.map(it=>dayTotals[it.k]),'',''].map(q).join(','));
   }
 
-  // Period total
-  rows.push([kyLabel,'TỔNG KỲ','','—',...ITEMS.map(it=>periodTotals[it.k]),'',''].map(q).join(','));
+  // Khúc đuôi xuất file: ĐÃ LOẠI BỎ DÒNG TỔNG KỲ THEO YÊU CẦU
 
-  let suffix = t==='week'
+  let suffix = t==='day' ? `ngay_${document.getElementById('rptDayDate').value}` : (t==='week'
     ? `tuan_${document.getElementById('rptWeekDate').value||today()}`
-    : `thang_${document.getElementById('rptMonth').value}_${document.getElementById('rptYear').value}`;
+    : `thang_${document.getElementById('rptMonth').value}_${document.getElementById('rptYear').value}`);
 
   downloadCSV(rows.join('\r\n'), `baocao_${suffix}.csv`);
-  showToast('✅ Đã xuất CSV thành công');
+  showToast('✅ Đã xuất CSV thành công (Không chứa tổng kỳ)');
 }
 
 // ════ CSV HELPER ════
@@ -1311,7 +1631,7 @@ async function buildAdminPwList() {
 
 async function resetPw(uid) {
   if (!confirm(`Reset mật khẩu ${USERS[uid].name} về "${DEFAULT_PWS[uid]}"?`)) return;
-  await dbSet(`passwords/${uid}`,DEFAULT_PWS[uid]);
+  await dbSet(`passwords/${uid planetary}`,DEFAULT_PWS[uid]);
   showToast(`✅ Đã reset mật khẩu ${USERS[uid].name}`);
   buildAdminPwList();
 }
